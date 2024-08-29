@@ -1,0 +1,78 @@
+"use client";
+
+import { UserFormValidation } from "@/Schema/validation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
+import { Form } from "../ui/form";
+import CustomForm from "./../CustomForm";
+import { Input } from "../ui/input";
+import { FormFieldType } from "@/constant";
+import { useState } from "react";
+import SubmitButton from "../SubmitButton";
+import { useRouter } from "next/navigation";
+import { users } from "@/lib/appwrite.config";
+import { ID } from "node-appwrite";
+import { createUser } from "@/lib/actions/patient.actions";
+
+const PatientForm: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const form = useForm<z.infer<typeof UserFormValidation>>({
+    resolver: zodResolver(UserFormValidation),
+    defaultValues: {
+      email: "",
+      name: "",
+      phone: "",
+    },
+  });
+  const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+    setIsLoading(true);
+    try {
+      const user = await createUser(values);
+      if(user) router.push (`/patients/${user.$id}/register`)
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+        <section className="mb-12 space-y-4">
+          <h1 className="header text-white">Hi there 👋</h1>
+          <p className="text-dark-700">Schedule your first appointment</p>
+        </section>
+        <CustomForm
+          name="name"
+          control={form.control}
+          fieldType={FormFieldType.INPUT}
+          label="Full Name"
+          placeholder="Billal Hossain"
+          iconSrc="/assets/icons/user.svg"
+          iconAlt="user"
+        />
+        <CustomForm
+          name="email"
+          control={form.control}
+          fieldType={FormFieldType.INPUT}
+          label="Email"
+          placeholder="example@email.com"
+          iconSrc="/assets/icons/email.svg"
+          iconAlt="email"
+        />
+        <CustomForm
+          name="phone"
+          control={form.control}
+          fieldType={FormFieldType.PHONE_INPUT}
+          label="Phone Number"
+          placeholder="+880 1515 00653"
+        />
+        <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
+      </form>
+    </Form>
+  );
+};
+export default PatientForm;
