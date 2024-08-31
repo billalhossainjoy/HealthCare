@@ -9,9 +9,9 @@ const Home: React.FC<SearchParamProps> = ({ searchParams }) => {
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}
-      <section className="container my-auto">
+      <section className="overflow-y-scroll remove-scrollbar container overflow-hidden">
         <div>
-          <div className="mx-auto flex size-full flex-col py-10 max-w-[860px] flex-1">
+          <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
             <Image
               src="/assets/icons/logo-full.svg"
               alt="healthcare"
