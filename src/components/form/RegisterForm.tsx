@@ -32,6 +32,8 @@ const RegisterForm: React.FC<{ user: User }> = ({ user }) => {
     resolver: zodResolver(PatientFormValidation),
     defaultValues: {
       ...PatientFormDefaultValues,
+      email: user?.email ?? "",
+      phone: user?.phone ?? "",
     },
   });
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {

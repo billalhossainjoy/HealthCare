@@ -3,8 +3,6 @@ import PasskeyModal from "@/components/PasskeyModal";
 import Image from "next/image";
 import Link from "next/link";
 
-
-
 const Home: React.FC<SearchParamProps> = ({ searchParams }) => {
   const isAdmin = searchParams.admin === "true";
 
@@ -13,7 +11,7 @@ const Home: React.FC<SearchParamProps> = ({ searchParams }) => {
       {isAdmin && <PasskeyModal />}
       <section className="container my-auto">
         <div>
-          <div className="mx-auto flex size-full flex-col py-10 max-w-[496px]">
+          <div className="mx-auto flex size-full flex-col py-10 max-w-[860px] flex-1">
             <Image
               src="/assets/icons/logo-full.svg"
               alt="healthcare"
@@ -22,6 +20,14 @@ const Home: React.FC<SearchParamProps> = ({ searchParams }) => {
               className="mb-12 h-10 w-fit"
             />
             <PatientForm />
+            {/* {login && <PatientLogin />} */}
+            <p
+              className="w-full text-center mt-3"
+              // onClick={() => setLogin(!login)}
+            >
+              If already an account ?
+              <span className="text-green-500">Sign in</span>
+            </p>
             <div className="text-14-regular mt-20 flex justify-between">
               <p className="justify-items-end text-dark-600">
                 © 2024 CarePluse

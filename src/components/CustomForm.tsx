@@ -77,6 +77,28 @@ const RenderField: React.FC<RenderFieldProps> = ({ field, props }) => {
           </FormControl>
         </div>
       );
+    case FormFieldType.PASSWORD:
+      return (
+        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+          {iconSrc && (
+            <Image
+              src={iconSrc}
+              alt={iconAlt || "icon"}
+              width={24}
+              height={24}
+              className="ml-2"
+            />
+          )}
+          <FormControl>
+            <Input
+              {...field}
+              type="password"
+              placeholder={placeholder}
+              className="border-0 bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </FormControl>
+        </div>
+      );
     case FormFieldType.PHONE_INPUT:
       return (
         <FormControl>

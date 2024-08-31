@@ -1,11 +1,11 @@
 "use server";
 
+
 import { UserFormValidation } from "@/Schema/validation";
 import { ID, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
 import { z } from "zod";
 import {
-  APPOINTMENT_COLLECTION_ID,
   BUCKET_ID,
   DATABASE_ID,
   databases,
@@ -20,14 +20,14 @@ export const createUser = async ({
   name,
   email,
   phone,
+  password,
 }: z.infer<typeof UserFormValidation>) => {
   try {
-    console.log(name, email, phone);
     const newUser = await users.create(
       ID.unique(),
       email,
       phone,
-      undefined,
+      password,
       name
     );
     return newUser;
@@ -81,15 +81,13 @@ export const getPatient = async (userId: string) => {
   try {
     const patients = await databases.listDocuments(
       DATABASE_ID!,
-      PATIENT_COLLECTION_ID!,
+      PATIENT_COLLECTION_ID!
       // [Query.equal("userId", [userId])]
     );
+    console.log(patients);
+    
     return patients.documents[0];
   } catch (error) {
     console.log(error);
   }
 };
-
-
-
-

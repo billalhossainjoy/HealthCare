@@ -5,7 +5,8 @@ export enum FormFieldType {
   CHECKBOX = "checkbox",
   PHONE_INPUT = "phoneInput",
   SKELETON = "skeleton",
-  DATE_PICKER = "datePicker"
+  DATE_PICKER = "datePicker",
+  PASSWORD= "password"
 }
 
 export const GenderOptions = ["Male", "Female", "Other"];

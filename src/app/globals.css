@@ -59,9 +59,11 @@
   }
 }
 @layer utilities {
-  html.dark {
-    /* overflow: hidden !important; */
+
+  .container {
+    @apply relative overflow-y-auto px-[5%];
   }
+
   .remove-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -94,8 +96,8 @@
   .shad-otp-slot {
     @apply text-[36px] leading-[36px] justify-center flex border border-dark-500 rounded-lg size-12 gap-4 p-8 !important;
   }
-  .data-table{
-    @apply w-full z-10 overflow-hidden rounded-lg border border-dark-400 shadow-lg
+  .data-table {
+    @apply w-full z-10 overflow-hidden rounded-lg border border-dark-400 shadow-lg;
   }
 }
 

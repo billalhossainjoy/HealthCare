@@ -11,9 +11,8 @@ import { FormFieldType } from "@/constant";
 import { useState } from "react";
 import SubmitButton from "../SubmitButton";
 import { useRouter } from "next/navigation";
-import { users } from "@/lib/appwrite.config";
-import { ID } from "node-appwrite";
 import { createUser } from "@/lib/actions/patient.actions";
+
 
 const PatientForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,13 +24,14 @@ const PatientForm: React.FC = () => {
       email: "",
       name: "",
       phone: "",
+      password: "",
     },
   });
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
     setIsLoading(true);
     try {
       const user = await createUser(values);
-      if(user) router.push (`/patients/${user.$id}/register`)
+      if (user) router.push(`/patients/${user.$id}/register`)
     } catch (error) {
       console.error(error);
       setIsLoading(false);
@@ -69,6 +69,13 @@ const PatientForm: React.FC = () => {
           fieldType={FormFieldType.PHONE_INPUT}
           label="Phone Number"
           placeholder="+880 1515 00653"
+        />
+        <CustomForm
+          name="password"
+          control={form.control}
+          fieldType={FormFieldType.PASSWORD}
+          label="Password"
+          placeholder="********"
         />
         <SubmitButton isLoading={isLoading}>Submit</SubmitButton>
       </form>

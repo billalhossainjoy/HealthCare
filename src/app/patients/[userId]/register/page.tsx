@@ -6,12 +6,15 @@ import { redirect } from "next/navigation";
 const Home: React.FC<{ params: { userId: string } }> = async ({ params }) => {
   const user = await getUser(params.userId);
   const patient = await getPatient(params.userId);
-  if (patient) redirect(`/patients/${params.userId}/new-appointment`);
-  if (!user) return;
+  // console.log(patient);
+  // if (patient && patient.$id)
+  //   redirect(`/patients/${params.userId}/new-appointment`);
 
   return (
     <div className="flex h-[100vh] remove-scrollbar overflow-hidden !important">
-      <section className="overflow-y-scroll remove-scrollbar container overflow-hidden">
+      <section
+        className="overflow-y-scroll remove-scrollbar container overflow-hidden"
+      >
         <div>
           <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
             <Image
