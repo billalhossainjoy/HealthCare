@@ -13,9 +13,9 @@ import SubmitButton from "../SubmitButton";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
 
-
 const PatientForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setError] = useState<any>(null);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -28,12 +28,15 @@ const PatientForm: React.FC = () => {
     },
   });
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+    setError(null);
     setIsLoading(true);
     try {
       const user = await createUser(values);
-      if (user) router.push(`/patients/${user.$id}/register`)
-    } catch (error) {
-      console.error(error);
+      if (user) router.push(`/patients/${user.$id}/register`);
+    } catch (error: any) {
+      form.setError("email",{type: "409", message: "User already exists"});
+      console.log('error');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -63,6 +66,7 @@ const PatientForm: React.FC = () => {
           iconSrc="/assets/icons/email.svg"
           iconAlt="email"
         />
+        <p>{errors?.email && errors.email?.message}</p>
         <CustomForm
           name="phone"
           control={form.control}

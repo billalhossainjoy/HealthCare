@@ -85,9 +85,9 @@ const RegisterForm: React.FC<{ user: User }> = ({ user }) => {
       if (newUser) {
         router.push(`/patients/${user.$id}/new-appointment`);
       }
-      setIsLoading(false);
     } catch (error) {
       console.log(error);
+    } finally {
       setIsLoading(false);
     }
   };

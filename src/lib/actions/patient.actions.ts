@@ -32,7 +32,7 @@ export const createUser = async ({
     );
     return newUser;
   } catch (error) {
-    console.log(error);
+    throw error
   }
 };
 export const getUser = async (userId: string) => {
