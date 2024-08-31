@@ -12,13 +12,9 @@ const Admin: React.FC = async () => {
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className=" sticky top-3 z-20 mx-3 justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12 flex">
         <Link href="/">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            alt="logo"
-            width={32}
-            height={162}
-            className="h-8 w-fit"
-          />
+            <div className="font-semibold text-xl ">
+              Health<span className="text-green-500">Care</span>
+            </div>
         </Link>
         <p className="text-16 font-semibold cursor-default">Admin Dashboard</p>
       </header>

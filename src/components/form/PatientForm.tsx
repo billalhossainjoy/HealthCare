@@ -43,7 +43,7 @@ const PatientForm: React.FC = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6 ">
         <section className="mb-12 space-y-4">
           <h1 className="header text-white">Hi there 👋</h1>
           <p className="text-dark-700">Schedule your first appointment</p>

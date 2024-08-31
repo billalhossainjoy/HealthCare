@@ -28,13 +28,9 @@ const Success: React.FC<Props> = async ({
     <div className="flex h-screen max-h-screen px-[5%] justify-center items-center">
       <div className="flex flex-col justify-center items-center w-full">
         <Link href={"/"}>
-          <Image
-            src="/assets/icons/logo-full.svg"
-            alt="logo"
-            height={1000}
-            width={1000}
-            className="h-10 w-fit"
-          />
+            <div className="font-semibold text-4xl my-5">
+              Health<span className="text-green-500">Care</span>
+            </div>
         </Link>
         <section className="flex flex-col justify-center items-center">
           <Image

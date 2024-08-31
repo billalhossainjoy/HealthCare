@@ -9,16 +9,12 @@ const Home: React.FC<SearchParamProps> = ({ searchParams }) => {
   return (
     <div className="flex h-screen max-h-screen">
       {isAdmin && <PasskeyModal />}
-      <section className="overflow-y-scroll remove-scrollbar container overflow-hidden">
-        <div>
+      <section className="overflow-y-scroll remove-scrollbar container overflow-hidden ">
+        <div className="p-16">
           <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
-            <Image
-              src="/assets/icons/logo-full.svg"
-              alt="healthcare"
-              height={1000}
-              width={1000}
-              className="mb-12 h-10 w-fit"
-            />
+            <div className="font-semibold text-4xl my-5">
+              Health<span className="text-green-500">Care</span>
+            </div>
             <PatientForm />
             {/* {login && <PatientLogin />} */}
             <p
