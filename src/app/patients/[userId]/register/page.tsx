@@ -10,11 +10,11 @@ const Home: React.FC<{ params: { userId: string } }> = async ({ params }) => {
   // if (patient && patient.$id)
   //   redirect(`/patients/${params.userId}/new-appointment`);
 
+  if (!user) return;
+
   return (
     <div className="flex h-[100vh] remove-scrollbar overflow-hidden !important">
-      <section
-        className="overflow-y-scroll remove-scrollbar container overflow-hidden"
-      >
+      <section className="overflow-y-scroll remove-scrollbar container overflow-hidden">
         <div>
           <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
             <Image
