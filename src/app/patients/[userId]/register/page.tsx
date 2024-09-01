@@ -10,7 +10,7 @@ const Home: React.FC<{ params: { userId: string } }> = async ({ params }) => {
   // if (patient && patient.$id)
   //   redirect(`/patients/${params.userId}/new-appointment`);
 
-  if (!user) return;
+ // if (!user) return;
 
   return (
     <div className="flex h-screen remove-scrollbar">
