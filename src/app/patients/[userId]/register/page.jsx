@@ -3,7 +3,7 @@ import { getPatient, getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-const Home: React.FC<{ params: { userId: string } }> = async ({ params }) => {
+const Home = async ({ params }) => {
   const user = await getUser(params.userId);
   const patient = await getPatient(params.userId);
   // console.log(patient);
